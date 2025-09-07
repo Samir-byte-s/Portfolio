@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sam's Portfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <style>
+    :root {
+      --primary-color: #1abc9c;
+      --text-light: #ffffff;
+      --bg-color: #000000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #000;
+      color: var(--text-light);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: moveStars 300s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 10000px; }
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: var(--primary-color);
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    section {
+      padding: 100px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .hero h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border: none;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #16a085;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .skill {
+      margin-bottom: 20px;
+    }
+
+    .skill p {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .progress-bar {
+      height: 20px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      width: 0;
+      line-height: 20px;
+      text-align: right;
+      padding-right: 10px;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 10px;
+      animation: fillBar 2s forwards;
+    }
+
+    @keyframes fillBar {
+      from { width: 0; }
+      to { width: var(--skill-level); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ccc;
+      margin-top: 50px;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars"></div>
+
+  <header>
+    <h1>Samir Subedi</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h2>Hello, I'm Samir Subedi</h2>
+    <h3><span id="typed"></span></h3>
+    <a href="#skills"><button class="btn">Explore Skills</button></a>
+  </section>
+
+  <section id="about" data-aos="fade-up">
+    <h2 class="section-title">About Me</h2>
+    <p>I’m a passionate frontend developer who loves to turn complex problems into elegant, user-friendly designs. My toolkit includes HTML, CSS, JavaScript, Basic Networking Configuration, and modern frameworks.</p>
+  </section>
+
+  <section id="skills" data-aos="fade-up">
+    <h2 class="section-title">Skills</h2>
+    
+    <div class="skill">
+      <p>HTML</p>
+      <div class="progress-bar">
+        <div class="progress-fill" style="--skill-level: 90%;">90%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <p>CSS</p>
+      <div class="progress-bar">
+        <div class="progress-fill" style="--skill-level: 85%;">85%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <p>JavaScript</p>
+      <div class="progress-bar">
+        <div class="progress-fill" style="--skill-level: 80%;">80%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <p>React</p>
+      <div class="progress-bar">
+        <div class="progress-fill" style="--skill-level: 75%;">75%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <p>Basic Networking Configuration</p>
+      <div class="progress-bar">
+        <div class="progress-fill" style="--skill-level: 70%;">70%</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-aos="fade-up">
+    <h2 class="section-title">Contact</h2>
+    <p>📧 Email: <a href="mailto:subedisameer5432@gmail.com">subedisameer5432@gmail.com</a></p>
+    <p>📱 Mobile No: <a href="sms:+9779815920360">9815920360</a></p>
+  </section>
+
+  <footer>
+    <p>🚀 Designed by Samir Subedi | © 2025 Cosmic Portfolio</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Typed text effect
+    var typed = new Typed("#typed", {
+      strings: ["Web Developer", "C Programming", "Basic Networking"],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true
+    });
+  </script>
+
+</body>
+</html>
