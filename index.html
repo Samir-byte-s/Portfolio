@@ -149,6 +149,72 @@
   transition: width 1s ease-in-out;
 }
 
+/* === Light-mode overrides (toggle) ===
+   Default of your page stays the same (dark).
+   When body gets the class "light-mode", these rules make text readable.
+*/
+.light-mode {
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+
+/* Header / nav in light mode */
+.light-mode header {
+  background: rgba(255,255,255,0.95) !important;
+  color: #111;
+  backdrop-filter: none;
+}
+.light-mode header h1 { color: var(--primary); }
+.light-mode nav a { color: #111 !important; }
+.light-mode nav a:hover { color: var(--secondary) !important; }
+
+/* Section titles and paragraph text */
+.light-mode .title,
+.light-mode section,
+.light-mode p,
+.light-mode .testimonial,
+.light-mode .project h3,
+.light-mode .skill p {
+  color: #111 !important;
+}
+
+/* Cards, projects, testimonials, skill boxes */
+.light-mode .skill,
+.light-mode .project,
+.light-mode .testimonial,
+.light-mode footer,
+.light-mode .modal-content {
+  background: #f7f7f7 !important;
+  color: #111 !important;
+}
+
+/* Inputs & textarea */
+.light-mode .contact-form input,
+.light-mode .contact-form textarea,
+.light-mode .modal-content input {
+  background: #fff !important;
+  color: #111 !important;
+  border: 1px solid #ddd !important;
+}
+
+/* Progress bar backgrounds in light mode */
+.light-mode .progress-bar { background: #eaeaea !important; }
+.light-mode .progress-fill {
+  background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+  color: #fff !important;
+}
+
+/* Buttons */
+.light-mode .btn { background: var(--primary) !important; color: #fff !important; }
+.light-mode #backTop { background: var(--primary) !important; color: #fff !important; }
+
+/* Ensure modal overlay remains visible in light mode */
+.light-mode .modal { background: rgba(0,0,0,0.6) !important; }
+
+/* Small responsive safety — keep contrast on small screens */
+@media (max-width: 600px) {
+  .light-mode header { padding: 12px !important; }
+}
 
   </style>
 </head>
@@ -283,12 +349,16 @@
     window.onclick=e=>{if(e.target==modal)modal.style.display="none";}
 
     // Dark mode toggle
-    const toggle=document.getElementById("modeToggle");
-    toggle.onclick=()=>{
-      if(document.body.style.background===""||document.body.style.background=== "rgb(10, 10, 10)"){
-        document.body.style.background="#fff"; document.body.style.color="#000"; toggle.innerHTML="☀";
-      }else{document.body.style.background="#0a0a0a"; document.body.style.color="#fff"; toggle.innerHTML="🌙";}
-    }
+  // Theme toggle (clean class-based approach)
+const toggle = document.getElementById("modeToggle");
+toggle.onclick = () => {
+  // Toggle light-mode class on <body>
+  const isLight = document.body.classList.toggle("light-mode");
+  // Update icon to reflect current mode
+  toggle.innerHTML = isLight ? "☀" : "🌙";
+};
+
   </script>
 </body>
 </html>
+
