@@ -246,7 +246,25 @@
 .contact-info a:hover {
   text-decoration: underline;
 }
+.whatsapp-btn {
+  display: inline-block;
+  background: #1b572f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
 
+.whatsapp-btn i {
+  margin-right: 8px;
+}
+
+.whatsapp-btn:hover {
+  background: #22b154;
+  transform: scale(1.05);
+}
   </style>
 </head>
 <body>
@@ -353,6 +371,11 @@
     <button class="btn" type="submit">Send Message</button>
   </form>
 </section>
+<div class="contact-info">
+  <a href="https://wa.me/9779800000000" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+  </a>
+</div>
 
 
   <footer>
@@ -403,6 +426,7 @@ toggle.onclick = () => {
   </script>
 </body>
 </html>
+
 
 
 
