@@ -424,7 +424,7 @@ body.light-mode .progress-bar {
     <section id="contact">
         <div class="contact-box" data-aos="zoom-in">
             <h2 class="title">Get In Touch</h2>
-            <form id="contactForm" action="https://formspree.io/f/xkgvldak" method="POST">
+            <form id="contactForm">
                 <input type="text" name="name" placeholder="Full Name" required>
                 <input type="email" name="email" placeholder="Email Address" required>
                 <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
@@ -495,25 +495,44 @@ window.onload = () => {
 
         // Form Submission
         const form = document.getElementById("contactForm");
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const status = document.getElementById("formStatus");
-            status.style.display = "block";
-            status.innerText = "Sending...";
-            
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-            
-            if (response.ok) {
-                status.innerHTML = "✅ Message sent successfully!";
-                form.reset();
-            } else {
-                status.innerHTML = "❌ Error sending message.";
-            }
-        };
+
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const button = form.querySelector("button");
+    const originalText = button.textContent;
+
+    button.textContent = "Sending...";
+    button.disabled = true;
+
+    const formData = new FormData(form);
+
+    try {
+       const response = await fetch(
+    "https://portfolio-contact.subedisameer5432.workers.dev",
+    {
+        method: "POST",
+        body: formData
+    }
+);
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert("Message sent successfully!");
+            form.reset();
+        } else {
+            alert("Failed to send message. Please try again.");
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Something went wrong. Please try again.");
+    }
+
+    button.textContent = originalText;
+    button.disabled = false;
+});
     </script>
 </body>
 <!-- Floating WhatsApp Button -->
